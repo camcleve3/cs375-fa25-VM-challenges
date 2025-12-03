@@ -58,6 +58,7 @@
 In a demand paging system, a page fault happens when a process tries to access a virtual page that currently isn’t in memory. First, the CPU checks the TLB. If the mapping isn’t there, it performs a page table walk. If the page table entry shows the page is not present, the MMU triggers a page fault exception and the OS takes over.
 The OS identifies where the page is stored on disk and picks a physical frame to load it into. If no free frames are available, the OS uses a replacement algorithm—such as Clock or LRU—to select a victim page. Modified pages must be written back to disk before eviction. The OS then reads the requested page from disk into memory, updates the page table, and adds the new translation to the TLB.
 Frequent page faults severely degrade performance because disk I/O is slow compared to RAM. Systems may even thrash if the working set doesn’t fit into memory. A common strategy to reduce page faults is allocating more frames to a process or using working set–based allocation so the process keeps the pages it actually uses.
+
 ---
 
 ### 2. Page Replacement Comparison (10 points)
@@ -172,13 +173,4 @@ Virtual Address: 0x00401234
 
 **Real-World Impact:** This approach enables modern systems to support large address spaces efficiently. A 32-bit system can theoretically address 4GB per process, but most processes use far less. Two-level paging makes this practical by allocating page table memory proportional to actual usage rather than potential usage.
 
----
 
-## Summary
-
-This completes the written portion of the assignment. The answers cover:
-- **Short answers:** 6 questions × 5 points = 30 points
-- **Long answers:** 4 questions × 10 points = 40 points
-- **Total:** 70 points from written questions
-
-The remaining 30 points come from the coding tasks (15 points each for Tasks 1 and 2), which are implemented in the provided C++ source files.
