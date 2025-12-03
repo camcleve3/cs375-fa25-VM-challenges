@@ -4,10 +4,10 @@
 ## 1. Simulation Screenshots
 
 ## Compilation (make clean + make)
-![Compilation succeeded](compilation.png)
+![Compilation succeeded](images/compilation.png)
 
 ## Virtual Memory Simulator Execution
-![VM simulator run](run-output.png)
+![VM simulator run](images/run-output.png)
 
 ## 2. One-Page Analysis Report
 # Virtual Memory System Behavior Analysis
