@@ -16,8 +16,10 @@ This simulation demonstrates how demand paging, TLB caching, and the Clock page-
 
 ### TLB Performance
 
-**TLB Hits:** 
+**TLB Hits:** 1
+
 **TLB Misses:** 4 
+
 **TLB Hit Rate:** 20%
 
 Because the first several accesses reference different pages from different processes (PID 1 → PID 1 → PID 2 → PID 3), the TLB had no opportunity to reuse cached translations. Only access #5 reused PID 1’s page, producing the single hit.
@@ -29,6 +31,7 @@ A small TLB + multiple processes = many initial misses. Once reused pages reappe
 ### Page Fault Behavior
 
 **Page Faults:** 4
+
 **Page Fault Rate:** 80%
 
 Every new page reference produced a fault because none of the pages had been loaded yet. This reflects the expected cost of demand paging during early execution, not poor replacement behavior.
