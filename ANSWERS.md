@@ -14,9 +14,10 @@
 
 This simulation demonstrates how demand paging, TLB caching, and the Clock page-replacement algorithm work together during virtual-to-physical memory translation. With a TLB size of 8 entries and 16 physical frames, the system shows typical cold-start behavior, where early accesses generate many misses.
 
-**TLB Performance**
-**TLB Hits:** 1
-**TLB Misses:** 4
+# TLB Performance
+
+**TLB Hits:** 
+**TLB Misses:** 4 
 **TLB Hit Rate:** 20%
 
 Because the first several accesses reference different pages from different processes (PID 1 → PID 1 → PID 2 → PID 3), the TLB had no opportunity to reuse cached translations. Only access #5 reused PID 1’s page, producing the single hit.
@@ -25,21 +26,22 @@ Low hit rates are normal at startup. As the working set stabilizes, the TLB hit 
 **Key Point:**
 A small TLB + multiple processes = many initial misses. Once reused pages reappear, hit rates improve.
 
-**Page Fault Behavior**
+# Page Fault Behavior
 **Page Faults:** 4
+
 **Page Fault Rate:** 80%
 
 Every new page reference produced a fault because none of the pages had been loaded yet. This reflects the expected cost of demand paging during early execution, not poor replacement behavior.
 Since only four unique pages were accessed, and physical memory holds 16 frames, no evictions occurred.
 
-**Clock Algorithm Evaluation**
+# Clock Algorithm Evaluation
 Although the Clock algorithm did not perform a full eviction during this trace, its behavior is predictable:
 - Recently accessed pages get a “second chance.”
 - Pages touched once (like PID 3’s page) would be evicted before heavily reused pages.
 - It approximates LRU with far lower overhead.
 In larger workloads, Clock would outperform FIFO and approach LRU performance without expensive tracking structures.
 
-**Overall System Assessment**
+# Overall System Assessment
 The simulator accurately reflects core virtual memory principles:
 - High early TLB misses and high page faults are normal during cold start.
 - Demand paging loads pages on first access.
